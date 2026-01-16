@@ -1,0 +1,9 @@
+1. setup page:
+    library page, dashboard page(empty), group page(with group id), search page
+2. mocked api
+    books/search
+    books/group
+3. component
+    Tabs
+    bookShelf
+    bookCard
