@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
 body {
-  @apply bg-slate-950 text-slate-100;
+  background: linear-gradient(to bottom,
+      #f7f7f7,
+      #fafafa);
+  color: #1f2937;
+  /* gray-800 */
 }
