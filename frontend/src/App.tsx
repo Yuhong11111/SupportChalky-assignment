@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import Library from './pages/library.tsx'
+import DashBoard from './pages/DashBoard.tsx'
 
 function Layout() {
   return (
@@ -20,6 +21,9 @@ function App() {
         <Route path="/" element={<Navigate to="/library" replace />} />
         <Route element={<Layout />}>
           <Route path="/library" element={<Library />} />
+        </Route>
+        <Route element={<Layout />}>
+          <Route path="/dashboard" element={<DashBoard />} />
         </Route>
       </Routes>
     </BrowserRouter>
