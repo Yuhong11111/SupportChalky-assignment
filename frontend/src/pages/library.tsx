@@ -92,7 +92,7 @@ export default function Library() {
       <section className="flex min-h-0 flex-1 flex-col">
         <form
           onSubmit={handleSearch}
-          className="mb-6 flex w-full max-w-xl items-center gap-3 rounded-xl border-2 border-slate-200 bg-white/80 px-4 py-3 shadow-sm"
+          className="mb-6 flex w-full max-w-xl items-center gap-2 rounded-xl border-2 border-slate-200 bg-white/80 py-2 pl-3 pr-0 shadow-sm"
         >
           <input
             type="text"
@@ -103,12 +103,12 @@ export default function Library() {
           />
           <button
             type="submit"
-            className="flex h-7 w-7 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 sm:h-8 sm:w-8 md:h-9 md:w-9"
+            className="flex h-6 w-6 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 sm:h-7 sm:w-7 md:h-8 md:w-8"
             aria-label="Search"
           >
             <svg
               viewBox="0 0 24 24"
-              className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5"
+              className="h-3 w-3 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"

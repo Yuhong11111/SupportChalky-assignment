@@ -66,6 +66,7 @@ export default function LibraryGroup() {
     author: book.author,
     coverUrl: book.cover_image_url || undefined,
     badge: book.lexile_level,
+    variant: 'framed' as const,
   }))
 
   return (
@@ -73,7 +74,7 @@ export default function LibraryGroup() {
       <button
         type="button"
         onClick={() => navigate('/library')}
-        className="inline-flex w-fit items-center gap-2 rounded-lg border border-slate-200 bg-white/80 px-3 py-1.5 text-sm font-semibold text-slate-700 shadow-sm"
+        className="inline-flex w-fit items-center gap-2 rounded-lg border border-blue-900 bg-blue-800 px-3 py-1.5 text-sm font-semibold text-white shadow-sm"
       >
         <span aria-hidden="true">←</span>
         Back
@@ -93,6 +94,7 @@ export default function LibraryGroup() {
             showAction: false,
             maxBooks: null,
             showMeta: true,
+            showPlaceholders: false,
           },
         ]}
       />
