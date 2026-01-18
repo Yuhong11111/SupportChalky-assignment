@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
+import Dashboard from './pages/dashboard.tsx'
 import Library from './pages/library.tsx'
 import DashBoard from './pages/DashBoard.tsx'
 
@@ -20,10 +21,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/library" replace />} />
         <Route element={<Layout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/library" element={<Library />} />
-        </Route>
-        <Route element={<Layout />}>
-          <Route path="/dashboard" element={<DashBoard />} />
         </Route>
       </Routes>
     </BrowserRouter>

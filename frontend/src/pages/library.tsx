@@ -3,7 +3,7 @@ import SideRail from '../components/SideRail'
 
 export default function Library() {
     return (
-        <div className="relative mx-auto flex max-w-6xl gap-8 px-6 pb-24 pt-12">
+    <div className="relative mx-auto flex max-w-6xl gap-8 pb-24 pr-6 pt-12">
             <SideRail activeLabel="library" />
 
             <section className="flex-1">
