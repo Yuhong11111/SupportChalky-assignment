@@ -7,3 +7,6 @@
     Tabs
     bookShelf
     bookCard
+4. data type
+    BookResponse:{id:int, title:str, author:str, descrption:str, cover_image_url:str, lexile_level:str, created_at:timestamp, updated_at:timestamp}
+    books:list[BookResponse]
