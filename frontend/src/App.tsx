@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom
 import Dashboard from './pages/dashboard.tsx'
 import Library from './pages/library.tsx'
 import LibraryGroup from './pages/library-group.tsx'
+import SearchPage from './pages/search.tsx'
 import DashBoard from './pages/DashBoard.tsx'
 
 function Layout() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/library" element={<Library />} />
           <Route path="/library/:group" element={<LibraryGroup />} />
+          <Route path="/search" element={<SearchPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

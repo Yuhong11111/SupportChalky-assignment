@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
-import { groupBooks, searchBooks, type BookResponse } from '../api/mockApi'
+import { useNavigate } from 'react-router-dom'
+import { groupBooks, type BookResponse } from '../api/mockApi'
 import Bookcase from '../components/Bookcase'
 import SideRail from '../components/SideRail'
 
 export default function Library() {
+  const navigate = useNavigate()
   const [groups, setGroups] = useState<Record<string, BookResponse[]>>({})
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [query, setQuery] = useState('')
-  const [searchResults, setSearchResults] = useState<BookResponse[] | null>(null)
 
   useEffect(() => {
     let isActive = true
@@ -47,25 +48,9 @@ export default function Library() {
   const handleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (!query.trim()) {
-      setSearchResults(null)
       return
     }
-    setIsLoading(true)
-    setError(null)
-    try {
-      const response = await searchBooks({
-        title: query,
-        page: 0,
-        row_per_page: 12,
-        sort_by: 'title',
-        sort_order: 'asc',
-      })
-      setSearchResults(response.books)
-    } catch (err) {
-      setError('Failed to search books.')
-    } finally {
-      setIsLoading(false)
-    }
+    navigate(`/search?q=${encodeURIComponent(query.trim())}`)
   }
 
   const buildShelves = (grouped: Record<string, BookResponse[]>) => {
@@ -141,26 +126,13 @@ export default function Library() {
           <p className="text-sm text-slate-600">Loading books...</p>
         ) : null}
 
-        {searchResults ? (
-          <div className="space-y-10">
-            <Bookcase
-              shelves={[
-                {
-                  label: 'Search',
-                  books: toShelfBooks(searchResults),
-                },
-              ]}
-            />
-          </div>
-        ) : (
-          <Bookcase
-            shelves={shelves.map((shelf) => ({
-              label: shelf.label,
-              books: toShelfBooks(shelf.books),
-              actionHref: `/library/${encodeURIComponent(shelf.slug)}`,
-            }))}
-          />
-        )}
+        <Bookcase
+          shelves={shelves.map((shelf) => ({
+            label: shelf.label,
+            books: toShelfBooks(shelf.books),
+            actionHref: `/library/${encodeURIComponent(shelf.slug)}`,
+          }))}
+        />
       </section>
     </div>
   )
