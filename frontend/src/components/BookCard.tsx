@@ -16,7 +16,7 @@ export default function BookCard({
   showMeta = false,
 }: BookCardProps) {
   return (
-    <article className={`w-32 ${className}`}>
+    <article className={`mx-auto w-full max-w-[7rem] sm:max-w-[8rem] ${className}`}>
       <div className="relative aspect-[3/4] overflow-hidden rounded-md border border-amber-200/70 bg-amber-50 shadow">
         {coverUrl ? (
           <img
@@ -26,8 +26,10 @@ export default function BookCard({
             loading="lazy"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-amber-100 via-orange-100 to-amber-200 text-center text-xs font-semibold uppercase tracking-wide text-amber-800">
-            {title}
+          <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-amber-100 via-orange-100 to-amber-200 px-3 text-center">
+            <span className="line-clamp-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-900 sm:text-xs md:text-sm">
+              {title}
+            </span>
           </div>
         )}
         {badge ? (

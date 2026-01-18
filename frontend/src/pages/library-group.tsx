@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { searchBooks, type BookResponse } from '../api/mockApi'
-import BookShelf from '../components/BookShelf'
+import Bookcase from '../components/Bookcase'
 
 const parseGroup = (groupParam?: string) => {
   if (!groupParam) return { label: 'Group', letters: [] as string[] }
@@ -69,7 +69,7 @@ export default function LibraryGroup() {
   }))
 
   return (
-    <div className="relative mx-auto flex max-w-6xl flex-col gap-6 pb-24 pr-6 pt-8">
+    <div className="relative mx-auto flex h-full max-w-6xl flex-col gap-6 pb-6 pr-4 pt-4 pl-14 sm:pl-16 md:pl-20 md:pb-10 md:pr-6 md:pt-8">
       <button
         type="button"
         onClick={() => navigate('/library')}
@@ -84,19 +84,18 @@ export default function LibraryGroup() {
         <p className="text-sm text-slate-600">Loading books...</p>
       ) : null}
 
-      <div className="relative">
-        <div className="relative h-12 rounded-full bg-gradient-to-b from-amber-500 via-amber-600 to-amber-700 shadow-lg" />
-        <div className="-mt-6">
-          <BookShelf
-            label={label}
-            books={shelfBooks}
-            showAction={false}
-            maxBooks={null}
-            showMeta
-          />
-        </div>
-        <div className="-mt-4 h-10 rounded-full bg-gradient-to-b from-amber-600 to-amber-700 shadow-lg" />
-      </div>
+      <Bookcase
+        className="flex-1 min-h-0"
+        shelves={[
+          {
+            label,
+            books: shelfBooks,
+            showAction: false,
+            maxBooks: null,
+            showMeta: true,
+          },
+        ]}
+      />
     </div>
   )
 }
