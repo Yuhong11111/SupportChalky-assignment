@@ -10,6 +10,7 @@ type Book = {
 type Shelf = {
   label: string
   books: Book[]
+  actionHref?: string
 }
 
 type BookcaseProps = {
@@ -29,6 +30,7 @@ export default function Bookcase({ shelves }: BookcaseProps) {
               key={shelf.label}
               label={shelf.label}
               books={shelf.books}
+              actionHref={shelf.actionHref}
             />
           ))}
         </div>

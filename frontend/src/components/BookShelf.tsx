@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import BookCard from './BookCard'
 
 type Book = {
@@ -12,6 +13,9 @@ type BookShelfProps = {
   books: Book[]
   actionLabel?: string
   showAction?: boolean
+  actionHref?: string
+  maxBooks?: number | null
+  showMeta?: boolean
 }
 
 export default function BookShelf({
@@ -19,7 +23,13 @@ export default function BookShelf({
   books,
   actionLabel = 'See more\nBooks',
   showAction = true,
+  actionHref,
+  maxBooks = 4,
+  showMeta = false,
 }: BookShelfProps) {
+  const visibleBooks =
+    typeof maxBooks === 'number' ? books.slice(0, maxBooks) : books
+
   return (
     <section className="relative">
       <div className="relative rounded-[28px] bg-gradient-to-b from-amber-900 via-amber-800 to-amber-900 px-6 pb-8 pt-10 shadow-inner">
@@ -28,21 +38,34 @@ export default function BookShelf({
         </span>
         <div className="flex items-start justify-between gap-6">
           <div className="grid flex-1 grid-cols-2 gap-6 sm:grid-cols-4">
-            {books.slice(0, 4).map((book) => (
-              <BookCard key={book.title} {...book} />
+            {visibleBooks.map((book) => (
+              <BookCard key={book.title} {...book} showMeta={showMeta} />
             ))}
           </div>
           {showAction ? (
-            <button
-              type="button"
-              className="mt-6 h-20 w-28 rounded-lg bg-indigo-600 px-3 text-sm font-semibold text-white shadow-lg shadow-indigo-900/20"
-            >
-              {actionLabel.split('\n').map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </button>
+            actionHref ? (
+              <Link
+                to={actionHref}
+                className="mt-6 h-20 w-28 rounded-lg bg-indigo-600 px-3 text-sm font-semibold text-white shadow-lg shadow-indigo-900/20"
+              >
+                {actionLabel.split('\n').map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </Link>
+            ) : (
+              <button
+                type="button"
+                className="mt-6 h-20 w-28 rounded-lg bg-indigo-600 px-3 text-sm font-semibold text-white shadow-lg shadow-indigo-900/20"
+              >
+                {actionLabel.split('\n').map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </button>
+            )
           ) : null}
         </div>
       </div>

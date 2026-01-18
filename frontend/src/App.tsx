@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import Dashboard from './pages/dashboard.tsx'
 import Library from './pages/library.tsx'
+import LibraryGroup from './pages/library-group.tsx'
 import DashBoard from './pages/DashBoard.tsx'
 
 function Layout() {
@@ -23,6 +24,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/library" element={<Library />} />
+          <Route path="/library/:group" element={<LibraryGroup />} />
         </Route>
       </Routes>
     </BrowserRouter>

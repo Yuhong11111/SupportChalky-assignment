@@ -86,6 +86,7 @@ export default function Library() {
 
     return ranges.map((letters) => ({
       label: letters.join(' - '),
+      slug: letters.join('-'),
       books: pickBooks(letters),
     }))
   }
@@ -156,6 +157,7 @@ export default function Library() {
             shelves={shelves.map((shelf) => ({
               label: shelf.label,
               books: toShelfBooks(shelf.books),
+              actionHref: `/library/${encodeURIComponent(shelf.slug)}`,
             }))}
           />
         )}
