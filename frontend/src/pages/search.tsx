@@ -124,7 +124,7 @@ export default function SearchPage() {
               books: shelfBooks,
               showAction: false,
               maxBooks: null,
-              showMeta: true,
+              showMeta: false,
               showPlaceholders: false,
             },
           ]}
