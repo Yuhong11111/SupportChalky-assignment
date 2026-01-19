@@ -128,6 +128,7 @@ export default function Library() {
 
         <Bookcase
           className="flex-1 min-h-0"
+          showMascot
           shelves={shelves.map((shelf) => ({
             label: shelf.label,
             books: toShelfBooks(shelf.books),

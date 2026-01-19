@@ -118,6 +118,7 @@ export default function SearchPage() {
 
         <Bookcase
           className="flex-1 min-h-0"
+          showMascot
           shelves={[
             {
               label: 'Search results',

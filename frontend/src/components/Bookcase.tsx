@@ -22,19 +22,21 @@ type BookcaseProps = {
   shelves: Shelf[]
   className?: string
   showFrame?: boolean
+  showMascot?: boolean
 }
 
 export default function Bookcase({
   shelves,
   className = '',
   showFrame = true,
+  showMascot = false,
 }: BookcaseProps) {
   return (
     <section
-      className={`relative flex h-[clamp(320px,56vh,480px)] flex-col pt-[8vh] ${className}`}
+      className={`relative flex h-[clamp(320px,56vh,480px)] flex-col overflow-visible pt-[8vh] ${className}`}
     >
       <div
-        className={`relative flex min-h-0 flex-1 flex-col p-0 ${
+        className={`relative flex min-h-0 flex-1 flex-col overflow-visible p-0 ${
           showFrame ? 'rounded-[36px] bg-amber-800 pb-10' : ''
         }`}
       >
@@ -55,6 +57,15 @@ export default function Bookcase({
         </div>
         {showFrame ? (
           <div className="absolute bottom-0 -left-4 -right-4 h-10 rounded-full bg-gradient-to-b from-amber-600 to-amber-700 shadow-lg" />
+        ) : null}
+        {showMascot ? (
+          <div className="absolute bottom-0 left-0 z-20 flex h-16 w-16 -translate-x-1/2 translate-y-2 items-end justify-center">
+            <div className="relative h-12 w-12 rounded-xl border-2 border-indigo-300 bg-indigo-200 shadow-sm">
+              <div className="absolute left-3 top-4 h-1.5 w-1.5 rounded-full bg-indigo-700" />
+              <div className="absolute right-3 top-4 h-1.5 w-1.5 rounded-full bg-indigo-700" />
+              <div className="absolute left-1/2 top-7 h-1 w-4 -translate-x-1/2 rounded-full bg-indigo-700" />
+            </div>
+          </div>
         ) : null}
       </div>
     </section>

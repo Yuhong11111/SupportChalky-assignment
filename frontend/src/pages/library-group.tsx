@@ -87,6 +87,7 @@ export default function LibraryGroup() {
 
       <Bookcase
         className="flex-1 min-h-0"
+        showMascot
         shelves={[
           {
             label,
